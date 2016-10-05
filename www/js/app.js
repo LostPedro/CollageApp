@@ -101,7 +101,7 @@ function createCanvasImage () {
           arr[(arr.length-1)].onload = function() {
             console.log('array: ',arr)
             context.drawImage(arr[0], 0, 0, 500, 1000);
-            context.drawImage(arr[2], 500, 0, 500, 1000);
+            context.drawImage(arr[1], 500, 0, 500, 1000);
             image.src=canvas.toDataURL("image/jpeg")
             $('#actualImage').attr('src', canvas.toDataURL("image/jpeg"));
             createFile();
@@ -126,7 +126,7 @@ function createCanvasImage () {
             context.drawImage(arr[0], 0, 0, 500, 500);
             context.drawImage(arr[1], 500, 0, 500, 500);
             context.drawImage(arr[2], 0, 500, 500, 500);
-            context.drawImage(arr[2], 500, 500, 500, 500);
+            context.drawImage(arr[3], 500, 500, 500, 500);
             image.src=canvas.toDataURL("image/jpeg")
             $('#actualImage').attr('src', canvas.toDataURL("image/jpeg"));
             createFile();
