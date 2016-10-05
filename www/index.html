@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  </head>
+  <body ng-app="starter" ng-controller="CollageCtrl">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic Collage Maker</h1>
+      </ion-header-bar>
+      <ion-content>
+
+      <button ng-click="uploadImage()">Upload Image</button>
+      <button onclick="draw()">Load</button>
+      <div id="collage">
+        <img id="actualImage" src="" width="60%" height="60%"/>
+        <img id="imgFile" src="" width="60%" height="60%"/>
+        <!--img ng-repeat="image in imageArray" ng-src="{{image}}" id="{{$index}}" style="display:none;" onload="draw()"-->
+        
+      </div>
+      <!--canvas id="myCanvas" width="1000" height="1000"style="display:none;"/-->
+
+      
+      </ion-content>
+    </ion-pane>
+    <script type="text/javascript">
+    //var img = document.createElement("IMG");
+      //img.src="img/238_1759_70.jpg";
+      //$('img').bind("onload",draw());
+      //img.onload = "draw()";
+      //console.log('img tag: ',img);
+     function draw (){
+
+      var canvas = document.createElement("CANVAS");
+      canvas.width = 1000;
+      canvas.height = 1000;
+      //console.log('canvas: ',canvas);
+      document.body.appendChild(canvas);
+        //var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext('2d');
+        //$('#collage').append($(canvas));
+        //console.log('collage: ',$('#collage'))
+        //canvas.width = 1000;
+        //canvas.height = 1000;
+        //var img1 = document.getElementById("0");
+        //var img2 = document.getElementById("1");
+        //var img3 = document.getElementById("2");
+        //var img4 = document.getElementById("3");
+        var img1 = new Image();
+        var img2 = new Image();
+        var img3 = new Image();
+        var img4 = new Image();
+        img1.src = "img/238_1759_70.jpg"
+        img2.src = "img/283_1713_67.jpg"
+        img3.src = "img/238_1759_70.jpg"
+        img4.src = "img/283_1713_67.jpg"
+
+        context.drawImage(img1, 0, 0, 500, 500)
+        context.drawImage(img2, 500, 0, 500, 500)
+        context.drawImage(img3, 0, 500, 500, 500)
+        context.drawImage(img4, 500, 500, 500, 500)
+
+        $('#actualImage').attr('src', canvas.toDataURL("image/jpeg"));
+        
+
+    }
+
+    </script>
+  </body>
+</html>
